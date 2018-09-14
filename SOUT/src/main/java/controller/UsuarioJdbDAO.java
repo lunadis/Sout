@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Tarefa;
 import model.Usuario;
 
 public class UsuarioJdbDAO {
@@ -40,11 +41,11 @@ public class UsuarioJdbDAO {
 		prepareStatement.close();
 	}
 	
-	public List<Usuario> listarUsuario(){
+	public List<Tarefa> listarUsuario(){
 			String sql = "select * from usuario";
 			System.out.println(sql);
 			
-			List<Usuario> listaUsuario = new ArrayList<Usuario>(); 
+			List<Tarefa> listaTarefa = new ArrayList<Tarefa>();
 			
 			try {
 				PreparedStatement prepareStatement = this.conn.prepareStatement(sql);

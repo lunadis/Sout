@@ -43,6 +43,7 @@ public class TelaCadInfluenciador extends JFrame {
 		pane.add(cboUsuario);
 		lblUsuario.setBounds(20, 30, 150, 20);
 		cboUsuario.setBounds(20, 60, 50, 20);
+		cboUsuario.addItem("");
 		
 		try {
 				 Connection connection = JdbUtil.getConnection();

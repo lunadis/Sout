@@ -14,7 +14,7 @@ public class MetodologiaJdbDAO {
 	}
 	
 	public void salvar (Metodologia c) throws SQLException{
-		String sql="insert into metodologia (titulo) values ('"+c.getNmMetodologia()+"')";
+		String sql="insert into metodologia (nmMetodologia) values ('"+c.getNmMetodologia()+"')";
 		System.out.println(sql);
 		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 		prepareStatement.executeUpdate();

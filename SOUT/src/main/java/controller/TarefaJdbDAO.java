@@ -15,7 +15,7 @@ public class TarefaJdbDAO {
 	}
 	
 	public void salvar (Tarefa c) throws SQLException{
-		String sql="INSERT INTO `tarefa` (`id_pessoa`, `id_metodologia`, `nmTarefa`, `descricao`, `dtPrazo`, `dtFinal`) VALUES ('"+c.getId_usuario()+"', '"+c.getId_metodologia()+"', '"+c.getNmTarefa()+"', '"+c.getDescricao()+"', '"+c.getDtPrazo()+"', '"+c.getDtFinal()+"')";
+		String sql="INSERT INTO `tarefa` (`id_usuario`, `id_metodologia`, `nmTarefa`, `descricao`, `dtPrazo`, `dtFinal`) VALUES ('"+c.getId_usuario()+"', '"+c.getId_metodologia()+"', '"+c.getNmTarefa()+"', '"+c.getDescricao()+"', '"+c.getDtPrazo()+"', '"+c.getDtFinal()+"')";
 		System.out.println(sql);
 		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 		prepareStatement.executeUpdate();

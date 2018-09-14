@@ -65,6 +65,7 @@ public class TelaCadMetodologia extends JFrame {
 			}
 		});
 		
+		
 		this.setLocationRelativeTo(null);
 		this.setSize(500, 300);
 		this.setLayout(null);
