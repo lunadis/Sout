@@ -79,8 +79,10 @@ public class TelaCadUsuario extends JFrame {
 					user1.setDsEmail(txtdsEmail.getText());
 					if(rdbFeminino.isSelected()) {
 					user1.setDsSexo("Feminino");
+					JOptionPane.showMessageDialog(null,"Usuario Cadastrado");
 					}else if(rdbMasculino.isSelected()) {
 					user1.setDsSexo("Masculino");
+					JOptionPane.showMessageDialog(null,"Usuario Cadastrado");
 					}else {
 						JOptionPane.showMessageDialog(null,"Insira o sexo");
 						}
@@ -90,6 +92,7 @@ public class TelaCadUsuario extends JFrame {
 				}catch(Exception e1){
 					e1.printStackTrace();
 				}
+				
 			}
 		});
 		

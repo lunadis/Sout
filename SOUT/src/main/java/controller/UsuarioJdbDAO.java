@@ -26,26 +26,26 @@ public class UsuarioJdbDAO {
 		prepareStatement.close();
 	}
 	public void delete (int a) throws SQLException{
-		String sql="DELETE FROM `usuario` WHERE `pessoas`.`id_Usuario` ="+a+"";
+		String sql="DELETE FROM `usuario` WHERE `usuario`.`id_Usuario` ="+a+"";
 		System.out.println(sql);
 		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 		prepareStatement.executeUpdate();
 		prepareStatement.close();
 	
 	}
-	public void update (int a, String string) throws SQLException{
-		String sql="UPDATE `usuario` SET `nmUsuario` = '"+string+"' WHERE `usuario`.`id_usuario` = "+a+"";
+	public void update (int a, Usuario c) throws SQLException{
+		String sql="UPDATE `usuario` SET `nmUsuario` = '"+c.getNmUsuario()+"', `dsEmail` = '"+c.getDsEmail()+"', `dsSexo` = '"+c.getDsSexo()+"' WHERE `usuario`.`id_usuario` = "+a+"";
 		System.out.println(sql);
 		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 		prepareStatement.executeUpdate();
 		prepareStatement.close();
 	}
 	
-	public List<Tarefa> listarUsuario(){
+	public List<Usuario> listarUsuario(){
 			String sql = "select * from usuario";
 			System.out.println(sql);
 			
-			List<Tarefa> listaTarefa = new ArrayList<Tarefa>();
+			List<Usuario> listaUsuario = new ArrayList<Usuario>();
 			
 			try {
 				PreparedStatement prepareStatement = this.conn.prepareStatement(sql);

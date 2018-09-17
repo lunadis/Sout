@@ -101,7 +101,7 @@ Container pane = this.getContentPane();
 					tef.setId_metodologia(Integer.parseInt(txtid_metodolgia.getText()));
 					tef.setDtPrazo(txtdtPrazo.getText());
 					tef.setDescricao(txtdescricao.getText());
-					tef.setId_usuario(cboUsuario.getSelectedIndex());
+					tef.setId_usuario(Integer.parseInt(cboUsuario.getSelectedItem().toString()));
 					
 					tarDAO.salvar(tef);
 					
@@ -119,8 +119,7 @@ Container pane = this.getContentPane();
 		});
 		
 		
-		
-		
+	
 		this.setSize(500, 300);
 		this.setLayout(null);
 		this.setVisible(true);

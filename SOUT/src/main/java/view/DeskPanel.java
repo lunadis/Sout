@@ -77,10 +77,31 @@ public class DeskPanel  extends JFrame{
 			});
 		
 		mUsuario.add(conUsuario);
+		conUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaConsulUsuario ConsultaUsuario = new TelaConsulUsuario();
+			}
+		});
 		mMetodologia.add(conMetodologia);
+		conMetodologia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaConsulMetodologia consulMetodologia = new TelaConsulMetodologia();
+			}
+		});
 		mInfluenciador.add(conInfluenciador);
+		conInfluenciador.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaConsulInfluenciador consulInfluenciador = new TelaConsulInfluenciador();
+			}
+		});
 		mTarefa.add(conTarefa);
+		conTarefa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaConsulTarefa consulTare = new TelaConsulTarefa();
+			}
+		});
 		
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 		this.setSize(600, 400);

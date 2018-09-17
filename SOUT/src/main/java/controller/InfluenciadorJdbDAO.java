@@ -26,48 +26,46 @@ public class InfluenciadorJdbDAO {
 		prepareStatement.close();
 	}
 	public void delete (int a) throws SQLException{
-		String sql="DELTE FROM 'INFLUENCIADOR' WHERE 'INFLUENCIADOR'.'ID'="+a+"";
+		String sql="DELETE FROM `influenciador` WHERE `influenciador`.`id_influenciador` = "+a+"";
 		System.out.println(sql);
 		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 		prepareStatement.executeUpdate();
 		prepareStatement.close();
 	}
-	public void update (int b, String string) throws SQLException{
-		String sql="UPDATE 'influenciador' SET 'nome'='"+string+"' WHERE 'influenciador'.'id' ="+b+"'";
+	public void update (int b, Influenciador in) throws SQLException{
+		String sql="UPDATE `influenciador` SET `id_usuario` = '"+in.getId_usuario()+"', `nmInfluenciador` = '"+in.getNmInfluenciador()+"', `dtInfluenciador` = '"+in.getDtInfluenciador()+"' WHERE `influenciador`.`id_influenciador` = "+b+"";
 		System.out.println(sql);
 		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 		prepareStatement.executeUpdate();
 		prepareStatement.close();
 	}
-	public List<Tarefa> listarTarefa(){
-		String sql = "select * from tarefa";
+	public List<Influenciador> listarInfluenciador(){
+		String sql = "select * from influenciador";
 		System.out.println(sql);
 		
-		List<Tarefa> listaTarefa = new ArrayList<Tarefa>(); 
+		List<Influenciador> listarInfluenciador = new ArrayList<Influenciador>(); 
 		
 		try {
 			PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 			ResultSet rs = prepareStatement.executeQuery();
 			while(rs.next()) {
 				
-				Tarefa t = new Tarefa();
+				Influenciador i = new Influenciador();
 				
-				t.setId_usuario(rs.getInt("id_usuario"));
-				t.setNmTarefa(rs.getString("nmTarefa"));
-				t.setId_metodologia(rs.getInt("id_metodologia"));
-				t.setDtPrazo(rs.getString("dtPrazo"));
-				t.setDescricao(rs.getString("descricao"));
+				i.setId_influenciador(rs.getInt("id_influenciador"));
+				i.setId_usuario(rs.getInt("id_usuario"));
+				i.setDtInfluenciador(rs.getString("dtInfluenciador"));
+				i.setNmInfluenciador(rs.getString("nmInfluenciador"));
 				
-				
-				
-				listaTarefa.add(t);
+						
+				listarInfluenciador.add(i);
 			}
 			
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
 		
-	return listaTarefa;
+	return listarInfluenciador;
 	
 }
 	
