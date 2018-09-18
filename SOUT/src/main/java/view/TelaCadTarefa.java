@@ -14,9 +14,11 @@ import javax.swing.JTextArea;
 
 import controller.InfluenciadorJdbDAO;
 import controller.JdbUtil;
+import controller.MetodologiaJdbDAO;
 import controller.TarefaJdbDAO;
 import controller.UsuarioJdbDAO;
 import model.Influenciador;
+import model.Metodologia;
 import model.Tarefa;
 import model.Usuario;
 
@@ -31,7 +33,7 @@ public class TelaCadTarefa extends JFrame {
 	JLabel lbldescricao = new  JLabel("Descricao:");
 	
 	JTextArea txtnmTarefa = new JTextArea();
-	JTextArea txtid_metodolgia = new JTextArea();
+	JComboBox cboMetodologia = new JComboBox();
 	JTextArea txtdtPrazo = new JTextArea();
 	JTextArea txtdescricao = new JTextArea();
 	
@@ -64,11 +66,12 @@ Container pane = this.getContentPane();
 		
 		pane.add(lblnmTarefa);
 		pane.add(lblid_metodolgia);
+		
 		pane.add(lbldtPrazo);
 		pane.add(lbldescricao);
 		//textearea
 		pane.add(txtnmTarefa);
-		pane.add(txtid_metodolgia);
+		pane.add(cboMetodologia);
 		pane.add(txtdtPrazo);
 		pane.add(txtdescricao);
 		pane.add(btnSalvar);
@@ -82,7 +85,18 @@ Container pane = this.getContentPane();
 		lbldescricao.setBounds(20, 170, 80, 20);
 		
 		txtnmTarefa.setBounds(95, 90, 80, 20);
-		txtid_metodolgia.setBounds(95, 115, 35, 20);
+		cboMetodologia.setBounds(95, 115, 80, 20);
+		try {
+				Connection connection = JdbUtil.getConnection();
+				MetodologiaJdbDAO metDAO = new MetodologiaJdbDAO(connection);
+				
+				List<Metodologia> listaMetodo = metDAO.listaMetodologia();
+					for(int i=0;i<listaMetodo.size();i++) {
+						cboMetodologia.addItem(listaMetodo.get(i).getId_metodologia());
+					}
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		txtdtPrazo.setBounds(95,145,80,20);
 		txtdescricao.setBounds(95, 170, 80, 80);
 		
@@ -98,7 +112,7 @@ Container pane = this.getContentPane();
 					Tarefa tef = new Tarefa();
 					
 					tef.setNmTarefa(txtnmTarefa.getText());
-					tef.setId_metodologia(Integer.parseInt(txtid_metodolgia.getText()));
+					tef.setId_metodologia(Integer.parseInt(cboMetodologia.getSelectedItem().toString()));
 					tef.setDtPrazo(txtdtPrazo.getText());
 					tef.setDescricao(txtdescricao.getText());
 					tef.setId_usuario(Integer.parseInt(cboUsuario.getSelectedItem().toString()));
@@ -124,5 +138,4 @@ Container pane = this.getContentPane();
 		this.setLayout(null);
 		this.setVisible(true);
 	}
-
 }

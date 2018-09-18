@@ -154,7 +154,7 @@ super("Cadastro de Usuario");
 					usuarioDAO.update(i, user1);
 					}else if(rdbMasculino.isSelected()) {
 					user1.setDsSexo("Masculino");
-					usuarioDAO.update(imn, user1);
+					usuarioDAO.update(i, user1);
 					}else {
 						JOptionPane.showMessageDialog(null,"Insira o sexo");
 						}
